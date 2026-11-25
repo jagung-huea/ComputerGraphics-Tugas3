@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+body { margin: 20px; font: 16px/1.5 system-ui, sans-serif; background: white; color: #222; }
+button, input { font: inherit; }
+button { min-height: 44px; cursor: pointer; }
+:focus-visible { outline: 2px solid #125ab0; }
+.site-header, .intro, .camera-bar, .button-strip, .tab-list { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(245px, 30%); gap: 12px; }
+.scene-column { grid-column: 1; grid-row: 1 / span 2; min-width: 0; }
+.viewport { position: relative; height: clamp(330px, 55vw, 560px); background: #f5f5f5; border: 1px solid #767676; overflow: hidden; }
+.viewport canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.scene-message, .view-label, .scene-hint, .touch-hint, .compass { position: absolute; margin: 0; background: white; padding: 4px 8px; pointer-events: none; }
+.scene-message { top: 50%; left: 50%; translate: -50% -50%; text-align: center; }
+.view-label { top: 8px; left: 8px; }
+.scene-hint, .touch-hint { bottom: 8px; left: 8px; }
+.touch-hint, .compass { display: none; }
+.object-marker { position: absolute; left: 0; top: 0; margin: -24px 0 0 -5px; width: 10px; height: 10px; background: #1456ab; border: 1px solid white; pointer-events: none; }
+.inventory, .inspector { grid-column: 2; padding: 8px; border: 1px solid #767676; }
+.object-list { display: flex; flex-wrap: wrap; gap: 4px; }
+.sliders, .setting-row { margin-block: 7px; }
+.setting-row input { display: block; width: 100%; }
+footer { margin-top: 12px; }
+@media (max-width: 680px) {
+  body { margin: 10px; }
+  .workspace { grid-template-columns: minmax(0, 1fr); }
+  .scene-column, .inventory, .inspector { grid-area: auto; }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LUSH RUIN, dunia 3D interaktif bertema Ocarina of Time untuk Tugas 3 Komputer Grafik.">
+  <title>Ocarina of Time | LUSH RUIN</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="masthead">
+      <div class="brand"><span class="seal" aria-hidden="true"></span><span>Ocarina of Time</span></div>
+      <span class="course">Tugas 3 · Komputer Grafik</span>
+      <button class="guide" id="open-guide" type="button">Panduan <span aria-hidden="true">?</span></button>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h1>LUSH RUIN</h1>
+      <div class="daylight button-strip" role="group" aria-label="Waktu adegan">
+        <button type="button" data-time="day" aria-pressed="true"><span aria-hidden="true">☼</span> Siang</button>
+        <button type="button" data-time="night" aria-pressed="false"><span class="moon-icon" aria-hidden="true"></span> Malam</button>
+      </div>
+    </div>
+
+    <div class="workspace">
+      <section class="scene-column" aria-label="Adegan dan kamera">
+        <div class="scene-mount">
+          <div id="viewport" class="viewport" role="group" aria-label="Adegan 3D LUSH RUIN" aria-busy="false">
+            <span class="corner top-left" aria-hidden="true"></span><span class="corner top-right" aria-hidden="true"></span>
+            <span class="corner bottom-left" aria-hidden="true"></span><span class="corner bottom-right" aria-hidden="true"></span>
+            <div class="view-label" id="view-name">Pratinjau kamera</div>
+            <div class="compass" aria-hidden="true"><b>U</b><span id="compass-needle"></span></div>
+            <p id="scene-message" class="scene-message" role="status">Wireframe area adegan 3D</p>
+            <span id="object-marker" class="object-marker" hidden aria-hidden="true"></span>
+            <p class="scene-hint" hidden><span id="mouse-orbit-hint">Seret untuk memutar · </span>Gulir untuk zoom</p>
+            <p class="touch-hint" hidden><span id="touch-orbit-hint">Geser untuk memutar · </span>Cubit untuk zoom</p>
+          </div>
+          <div class="camera-bar">
+            <span class="bar-label">Kamera</span>
+            <div class="camera-buttons button-strip" role="group" aria-label="Preset kamera">
+              <button type="button" data-view="orbit" aria-pressed="true">Orbit</button>
+              <button type="button" data-view="front" aria-pressed="false">Depan</button>
+              <button type="button" data-view="top" aria-pressed="false">Atas</button>
+            </div>
+            <div class="zoom-buttons" role="group" aria-label="Zoom kamera">
+              <button type="button" data-zoom="out" aria-label="Perkecil adegan">−</button>
+              <button type="button" data-zoom="in" aria-label="Perbesar adegan">+</button>
+            </div>
+          </div>
+        </div>
+        <noscript><p class="boot-note">Aktifkan JavaScript untuk membuka adegan 3D.</p></noscript>
+      </section>
+
+      <nav class="inventory" aria-labelledby="inventory-title">
+        <div class="folio-heading"><h2 id="inventory-title">Artefak</h2></div>
+        <div id="object-list" class="object-list" role="group" aria-label="Pilih artefak">
+          <button type="button" data-object="gate" aria-pressed="false">Gerbang Batu</button>
+          <button type="button" data-object="ocarina" aria-pressed="true">Ocarina Biru</button>
+          <button type="button" data-object="chest" aria-pressed="false">Peti Kayu</button>
+          <button type="button" data-object="lantern" aria-pressed="false">Lentera Hutan</button>
+          <button type="button" data-object="photo" aria-pressed="false">Bingkai Foto</button>
+        </div>
+      </nav>
+
+      <aside class="inspector" aria-labelledby="inspector-title">
+        <div class="folio-heading"><h2 id="inspector-title">Kendali Adegan</h2></div>
+        <div class="tab-list" role="tablist" aria-label="Kendali adegan">
+          <button type="button" id="object-tab" role="tab" aria-controls="object-panel" aria-selected="true">Transformasi</button>
+          <button type="button" id="light-tab" role="tab" aria-controls="light-panel" aria-selected="false" tabindex="-1">Cahaya</button>
+        </div>
+
+        <section class="panel" id="object-panel" role="tabpanel" aria-labelledby="object-tab">
+          <div class="selection">
+            <span id="object-icon" class="object-icon light-symbol" aria-hidden="true">♪</span>
+            <div><p class="selection-label">Objek terpilih</p><h3 id="object-name">Ocarina Biru</h3></div>
+          </div>
+          <div class="axis-line setting-row">
+            <span>Sumbu</span>
+            <div class="axis-buttons button-strip" role="group" aria-label="Sumbu transformasi">
+              <button type="button" data-axis="x" aria-pressed="true">X</button>
+              <button type="button" data-axis="y" aria-pressed="false">Y</button>
+              <button type="button" data-axis="z" aria-pressed="false">Z</button>
+            </div>
+          </div>
+          <div class="sliders">
+            <div class="setting-row">
+              <label for="position">Posisi</label>
+              <div class="range-well"><output id="position-value" for="position"></output><input type="range" id="position" min="-8" max="8" step="0.01" value="0"></div>
+            </div>
+            <div class="setting-row">
+              <label for="rotation">Rotasi</label>
+              <div class="range-well"><output id="rotation-value" for="rotation"></output><input type="range" id="rotation" min="-180" max="180" step="1" value="0"></div>
+            </div>
+            <div class="setting-row">
+              <label for="scale">Skala</label>
+              <div class="range-well"><output id="scale-value" for="scale"></output><input type="range" id="scale" min="0.25" max="2.5" step="0.05" value="1"></div>
+            </div>
+          </div>
+          <button type="button" id="reset-object" class="reset-button"><span aria-hidden="true">↶</span> Reset objek</button>
+          <p class="panel-note">Pilih artefak dari daftar atau klik modelnya di adegan.</p>
+        </section>
+
+        <section class="panel" id="light-panel" role="tabpanel" aria-labelledby="light-tab">
+          <div class="selection">
+            <span id="light-symbol" class="object-icon light-symbol" aria-hidden="true">☼</span>
+            <div><p class="selection-label" id="light-time">Pencahayaan siang</p><h3>Cahaya Utama</h3></div>
+          </div>
+          <div class="sliders">
+            <div class="setting-row">
+              <label for="intensity">Intensitas</label>
+              <div class="range-well"><output id="intensity-value" for="intensity"></output><input type="range" id="intensity" min="0" max="3" step="0.05" value="2.4"></div>
+            </div>
+            <div class="setting-row">
+              <label for="hue">Warna cahaya</label>
+              <div class="range-well"><output id="hue-value" for="hue"></output><input class="hue-range" type="range" id="hue" min="0" max="360" step="1" value="39"></div>
+            </div>
+            <div class="light-sample"><span id="light-swatch" aria-hidden="true"></span><span id="light-hex"></span></div>
+          </div>
+          <button type="button" id="reset-light" class="reset-button"><span aria-hidden="true">↶</span> Reset cahaya</button>
+          <p class="panel-note">Siang dan malam mengubah cahaya utama, cahaya lingkungan, dan kabut.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <dialog id="guide-dialog" aria-labelledby="guide-title">
+    <div class="dialog-heading"><h2 id="guide-title">Panduan Eksplorasi</h2><form method="dialog"><button type="submit" aria-label="Tutup panduan">×</button></form></div>
+    <dl>
+      <div><dt>Kamera</dt><dd>Seret adegan untuk memutar dan gulir atau cubit untuk zoom. Saat kanvas fokus, gunakan tombol panah untuk orbit serta + dan − untuk zoom. Depan dan Atas mengunci sudut kamera.</dd></div>
+      <div><dt>Artefak</dt><dd>Klik objek atau pilih dari daftar. Pilih sumbu X, Y, atau Z, lalu ubah posisi, rotasi, atau skala. Tombol panah mengatur slider yang sedang fokus.</dd></div>
+      <div><dt>Cahaya</dt><dd>Pilih Siang atau Malam. Buka tab Cahaya untuk mengatur intensitas dan warna cahaya utama.</dd></div>
+    </dl>
+  </dialog>
+</body>
+</html>
