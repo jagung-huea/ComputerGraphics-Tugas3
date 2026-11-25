@@ -7,6 +7,8 @@
   <title>Ocarina of Time | LUSH RUIN</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./styles.css">
+  <script defer src="./assets/vendor/atlas-3d.js"></script>
+  <script defer src="./world.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -30,12 +32,12 @@
     <div class="workspace">
       <section class="scene-column" aria-label="Adegan dan kamera">
         <div class="scene-mount">
-          <div id="viewport" class="viewport" role="group" aria-label="Adegan 3D LUSH RUIN" aria-busy="false">
+          <div id="viewport" class="viewport" role="group" aria-label="Adegan 3D LUSH RUIN" aria-busy="true">
             <span class="corner top-left" aria-hidden="true"></span><span class="corner top-right" aria-hidden="true"></span>
             <span class="corner bottom-left" aria-hidden="true"></span><span class="corner bottom-right" aria-hidden="true"></span>
             <div class="view-label" id="view-name">Pratinjau kamera</div>
             <div class="compass" aria-hidden="true"><b>U</b><span id="compass-needle"></span></div>
-            <p id="scene-message" class="scene-message" role="status">Pratinjau kontrol. Adegan 3D belum terhubung.</p>
+            <p id="scene-message" class="scene-message" role="status">Menyiapkan adegan 3D…</p>
             <span id="object-marker" class="object-marker" hidden aria-hidden="true"></span>
             <p class="scene-hint" hidden><span id="mouse-orbit-hint">Seret untuk memutar · </span>Gulir untuk zoom</p>
             <p class="touch-hint" hidden><span id="touch-orbit-hint">Geser untuk memutar · </span>Cubit untuk zoom</p>
