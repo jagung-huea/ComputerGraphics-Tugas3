@@ -24,8 +24,8 @@
     <div class="intro">
       <h1>LUSH RUIN</h1>
       <div class="daylight button-strip" role="group" aria-label="Waktu adegan">
-        <button type="button" data-time="day" aria-pressed="true"><span aria-hidden="true">☼</span> Siang</button>
-        <button type="button" data-time="night" aria-pressed="false"><span class="moon-icon" aria-hidden="true"></span> Malam</button>
+        <button type="button" data-time="day" disabled aria-pressed="true"><span aria-hidden="true">☼</span> Siang</button>
+        <button type="button" data-time="night" disabled aria-pressed="false"><span class="moon-icon" aria-hidden="true"></span> Malam</button>
       </div>
     </div>
 
@@ -35,12 +35,12 @@
           <div id="viewport" class="viewport" role="group" aria-label="Adegan 3D LUSH RUIN" aria-busy="true">
             <span class="corner top-left" aria-hidden="true"></span><span class="corner top-right" aria-hidden="true"></span>
             <span class="corner bottom-left" aria-hidden="true"></span><span class="corner bottom-right" aria-hidden="true"></span>
-            <div class="view-label" id="view-name">Pratinjau kamera</div>
+            <div class="view-label" id="view-name">Perspektif orbit</div>
             <div class="compass" aria-hidden="true"><b>U</b><span id="compass-needle"></span></div>
             <p id="scene-message" class="scene-message" role="status">Menyiapkan adegan 3D…</p>
             <span id="object-marker" class="object-marker" hidden aria-hidden="true"></span>
-            <p class="scene-hint" hidden><span id="mouse-orbit-hint">Seret untuk memutar · </span>Gulir untuk zoom</p>
-            <p class="touch-hint" hidden><span id="touch-orbit-hint">Geser untuk memutar · </span>Cubit untuk zoom</p>
+            <p class="scene-hint"><span id="mouse-orbit-hint">Seret untuk memutar · </span>Gulir untuk zoom</p>
+            <p class="touch-hint"><span id="touch-orbit-hint">Geser untuk memutar · </span>Cubit untuk zoom</p>
           </div>
           <div class="camera-bar">
             <span class="bar-label">Kamera</span>
@@ -60,13 +60,7 @@
 
       <nav class="inventory" aria-labelledby="inventory-title">
         <div class="folio-heading"><h2 id="inventory-title">Artefak</h2></div>
-        <div id="object-list" class="object-list" role="group" aria-label="Pilih artefak">
-          <button type="button" data-object="gate" aria-pressed="false">Gerbang Batu</button>
-          <button type="button" data-object="ocarina" aria-pressed="true">Ocarina Biru</button>
-          <button type="button" data-object="chest" aria-pressed="false">Peti Kayu</button>
-          <button type="button" data-object="lantern" aria-pressed="false">Lentera Hutan</button>
-          <button type="button" data-object="photo" aria-pressed="false">Bingkai Foto</button>
-        </div>
+        <div id="object-list" class="object-list" role="group" aria-label="Pilih artefak"></div>
       </nav>
 
       <aside class="inspector" aria-labelledby="inspector-title">
@@ -115,15 +109,15 @@
           <div class="sliders">
             <div class="setting-row">
               <label for="intensity">Intensitas</label>
-              <div class="range-well"><output id="intensity-value" for="intensity"></output><input type="range" id="intensity" min="0" max="3" step="0.05" value="2.4"></div>
+              <div class="range-well"><output id="intensity-value" for="intensity"></output><input type="range" id="intensity" disabled min="0" max="3" step="0.05" value="2.4"></div>
             </div>
             <div class="setting-row">
               <label for="hue">Warna cahaya</label>
-              <div class="range-well"><output id="hue-value" for="hue"></output><input class="hue-range" type="range" id="hue" min="0" max="360" step="1" value="39"></div>
+              <div class="range-well"><output id="hue-value" for="hue"></output><input class="hue-range" type="range" id="hue" disabled min="0" max="360" step="1" value="39"></div>
             </div>
             <div class="light-sample"><span id="light-swatch" aria-hidden="true"></span><span id="light-hex"></span></div>
           </div>
-          <button type="button" id="reset-light" class="reset-button"><span aria-hidden="true">↶</span> Reset cahaya</button>
+          <button type="button" id="reset-light" disabled class="reset-button"><span aria-hidden="true">↶</span> Reset cahaya</button>
           <p class="panel-note">Siang dan malam mengubah cahaya utama, cahaya lingkungan, dan kabut.</p>
         </section>
       </aside>
